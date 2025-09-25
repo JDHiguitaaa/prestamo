@@ -14,12 +14,10 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">
-        <img th:src="@{/img/icono.png}" class="icono" />
-      </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
+        
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
@@ -34,7 +32,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-              Comercial
+              Inventario
             </a>
             <div class="dropdown-menu">
               <a class="dropdown-item" th:href="@{/comercial/categoriaslistar}">Categorias</a>
@@ -56,10 +54,10 @@
   <footer class="container mt-3" th:fragment="footer">
     <hr />
     <img th:src="@{/img/logo.png}" class="logo" />
-    <p class="mt-2" style="font-size: 0.85em">
+    <p class="mt-2" style="font-size: 0.95rem">
       Este proyecto fue desarrollado con Java, Spring framework 6 &amp; Spring
-      Boot 3 por el grupo<br />
-      Desarrollo Web 1. &copy; DW2 2024-2. Todos los derechos reservados,
+      Boot 3 por<br />
+      Juan David Higuita. &copy; 2025 .Todos los derechos reservados <br>
       términos de uso y privacidad.
     </p>
     <script th:src="@{/js/jquery.min.js}"></script>

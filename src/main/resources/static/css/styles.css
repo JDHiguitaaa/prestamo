@@ -1,0 +1,231 @@
+/* Variables globales */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --info-color: #3498db;
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  --transition: all 0.3s ease;
+  --border-radius: 0.5rem;
+}
+
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f8f9fa;
+  line-height: 1.6;
+}
+
+/* Utilidades de ancho */
+.cw-90 { width: 90%; }
+.cw-80 { width: 80%; }
+.cw-70 { width: 70%; }
+.cw-60 { width: 60%; }
+.cw-50 { width: 50%; }
+
+/* Navbar personalizada */
+.navbar {
+  box-shadow: var(--shadow-md);
+}
+
+.navbar-custom {
+  background-color: var(--primary-color);
+}
+
+.navbar-custom .navbar-brand {
+  font-weight: 600;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.navbar-custom .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  padding: 0.7rem 1rem;
+  transition: var(--transition);
+}
+
+.navbar-custom .nav-link:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.navbar-custom .dropdown-menu {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius);
+}
+
+.navbar-custom .dropdown-item {
+  padding: 0.7rem 1.5rem;
+  transition: var(--transition);
+}
+
+.navbar-custom .dropdown-item:hover {
+  background-color: var(--light-color);
+  color: var(--secondary-color);
+}
+
+/* Botones personalizados */
+.btn {
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  border-color: #2980b9;
+}
+
+.btn-orange {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+  padding: 0.5rem 1.2rem;
+}
+
+.btn-orange:hover {
+  background-color: #c0392b;
+  border-color: #c0392b;
+  color: white;
+}
+
+.btn-group-xs>.btn, .btn-xs {
+  padding: .5rem .5rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .3rem;
+}
+
+/* Tarjetas y contenedores */
+.card {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  background-color: var(--light-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1.25rem 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* Tablas */
+.table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(236, 240, 241, 0.5);
+}
+
+.table th {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 500;
+  border-top: none;
+}
+
+.table td, .table th {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+/* Alertas */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Formularios */
+.form-control {
+  border-radius: var(--border-radius);
+  border: 1px solid #ddd;
+  padding: 0.6rem 1rem;
+  transition: var(--transition);
+}
+
+.form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Elementos de imagen */
+.logo {
+  width: 120px;
+  transition: var(--transition);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.icono {
+  width: 50px;
+  transition: var(--transition);
+}
+
+/* Footer personalizado */
+.footer {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.8);
+  transition: var(--transition);
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+/* Utilidades de texto */
+.text-orange {
+  color: var(--accent-color);
+}
+
+/* Animaciones y transiciones */
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

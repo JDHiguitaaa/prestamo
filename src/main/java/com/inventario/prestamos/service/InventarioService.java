@@ -5,8 +5,10 @@ import java.util.List;
 import com.inventario.prestamos.model.dao.ProductoDAOIface;
 import com.inventario.prestamos.model.entity.Producto;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+@Service
 public class InventarioService implements InventarioServiceIface {
     private final ProductoDAOIface productoDAO;
 

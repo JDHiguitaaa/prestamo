@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{plantillas/principal :: head}"></head>
+<body>
+	<header th:replace="~{plantillas/principal :: header}"></header>
+	
+	<div class="container  py-4">
+
+		<div class="card bg-light">
+			<div class="bg-dark card-header">
+				<h3 class="text-white" th:text="${titulo}"></h3>
+			</div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<!-- <a class="btn btn-outline-success btn-sm" 
+						th:href="@{/inventario/productonuevo}">Crear producto</a> -->
+				</h4>
+				<table class="table table-striped table-hover table-bordered table-sm table-responsive table-sm" th:if="${not #lists.isEmpty(productos)}">
+					<tr>
+						<th>Id.</th>
+						<th>Descripción</th>
+						<th>Cantidad</th>
+						<th>Categoría</th>
+						<th>Disponible</th>
+						<th>Responsable</th>
+						<th class="text-center">Acciones</th>
+					</tr>
+					<tr th:each="prod : ${productos}">
+						<td th:text="${prod.id}"></td>
+						<td th:text="${prod.descripcion}"></td>
+						<td th:text="${prod.cantidad}"></td>
+						<td th:text="${prod.categoria}"></td>
+						<td th:text="${prod.disponible ? 'Sí' : 'No'}"></td>
+						<td th:text="${prod.responsable}"></td>
+						<td class="text-center">
+							<a th:href="@{/inventario/productomodificar/} + ${prod.id}" title="editar">
+								<i class="bi-pencil-fill" style="color: cornflowerblue"></i></a>&nbsp;
+							<a th:href="@{/inventario/productoeliminar/} + ${prod.id}" title="eliminar"
+								onclick="return confirm('¿Está seguro de eliminar el producto?')">
+								<i class="bi-eraser-fill" style="color: indianred"></i></a>
+						</td>
+					</tr>
+				</table>
+				<div class="alert alert-warning" th:if="${#lists.isEmpty(productos)}">No hay productos para mostrar</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer th:replace="~{plantillas/principal :: footer}"></footer>
+</body>
+</html>
