@@ -2,15 +2,24 @@ package com.inventario.prestamos.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import org.hibernate.validator.constraints.EAN;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 
 
 @Entity
@@ -22,37 +31,52 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String codigo;
     @NotEmpty
     private String descripcion;
     private Integer cantidad;
-    private Date fechaUltIngreso;
-	private boolean disponible;
-    private Date fechaPrestamo;
-    private Date fechaDevolucion;
-    private String nombreUsuario;
-    private String responsable;
-    private String categoria;
 
-    public Producto(Long id, String descripcion, Integer cantidad, Date fechaUltIngreso, boolean disponible,
-            Date fechaPrestamo, Date fechaDevolucion, String nombreUsuario, String responsable, String categoria) {
+    @Column(name = "ultimo_ingreso")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	@Past
+    private Date fechaUltIngreso;
+    
+	private boolean disponible;
+    private String categoria;
+    
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PrestamoProducto> prestamosProductos;
+
+    public Producto() {
+    }
+
+    public Producto(Long id, String codigo, String descripcion, Integer cantidad, Date fechaUltIngreso, boolean disponible,
+             String nombreUsuario, String categoria) {
         this.id = id;
+        this.codigo = codigo;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.fechaUltIngreso = fechaUltIngreso;
         this.disponible = disponible;
-        this.fechaPrestamo = fechaPrestamo;
-        this.fechaDevolucion = fechaDevolucion;
-        this.nombreUsuario = nombreUsuario;
-        this.responsable = responsable;
         this.categoria = categoria;
     }
 
-        public Long getId() {
+    public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescripcion() {
@@ -87,38 +111,6 @@ public class Producto implements Serializable {
         this.disponible = disponible;
     }
 
-    public Date getFechaPrestamo() {
-        return fechaPrestamo;
-    }
-
-    public void setFechaPrestamo(Date fechaPrestamo) {
-        this.fechaPrestamo = fechaPrestamo;
-    }
-
-    public Date getFechaDevolucion() {
-        return fechaDevolucion;
-    }
-
-    public void setFechaDevolucion(Date fechaDevolucion) {
-        this.fechaDevolucion = fechaDevolucion;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-
-    public String getResponsable() {
-        return responsable;
-    }
-
-    public void setResponsable(String responsable) {
-        this.responsable = responsable;
-    }
-
     public String getCategoria() {
         return categoria;
     }
@@ -127,12 +119,18 @@ public class Producto implements Serializable {
         this.categoria = categoria;
     }
 
+    public List<PrestamoProducto> getPrestamosProductos() {
+        return prestamosProductos;
+    }
+    public void setPrestamosProductos(List<PrestamoProducto> prestamosProductos) {
+        this.prestamosProductos = prestamosProductos;
+    }
+
     @Override
     public String toString() {
-        return "Producto [id=" + id + ", descripcion=" + descripcion + ", cantidad=" + cantidad + ", fechaUltIngreso="
-                + fechaUltIngreso + ", disponible=" + disponible + ", fechaPrestamo=" + fechaPrestamo
-                + ", fechaDevolucion=" + fechaDevolucion + ", nombreUsuario=" + nombreUsuario + ", responsable="
-                + responsable + ", categoria=" + categoria + "]";
+        return "Producto [id=" + id + ", codigo=" + codigo + ", descripcion=" + descripcion + ", cantidad=" + cantidad
+                + ", fechaUltIngreso=" + fechaUltIngreso + ", disponible=" + disponible +", categoria=" + categoria + "]";
     }
+
 
 }

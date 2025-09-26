@@ -15,6 +15,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <img th:src="@{/img/inventario-logo.png}" alt="Logo inventario" width="45" />
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         
@@ -51,19 +52,26 @@
 
   <div class="container py-4"></div>
 
-  <footer class="container mt-3" th:fragment="footer">
+  <footer class="container mt-5 pt-3 pb-3 text-center" th:fragment="footer">
     <hr />
-    <img th:src="@{/img/logo.png}" class="logo" />
-    <p class="mt-2" style="font-size: 0.95rem">
-      Este proyecto fue desarrollado con Java, Spring framework 6 &amp; Spring
-      Boot 3 por<br />
-      Juan David Higuita. &copy; 2025 .Todos los derechos reservados <br>
-      términos de uso y privacidad.
+    <img th:src="@{/img/logo.png}" class="logo mb-3" alt="Logo del Proyecto" width="150" />
+    
+    <p class="text-muted" style="font-size: 0.95rem;">
+        Este proyecto fue desarrollado con Java, Spring Framework 6 &amp; Spring Boot 3 por<br />
+        <strong>Juan David Higuita</strong>. &copy; 2025. Todos los derechos reservados.
     </p>
-    <script th:src="@{/js/jquery.min.js}"></script>
+    
+    <p class="text-muted">
+        <a href="#" class="text-decoration-none">Términos de uso</a> | 
+        <a href="#" class="text-decoration-none">Política de privacidad</a>
+    </p>
+    
+    <!-- Scripts de JS -->
+<!--     <script th:src="@{/js/jquery.min.js}"></script>
     <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
-    <script th:src="@{/js/jquery-ui.min.js}"></script>
-  </footer>
+    <script th:src="@{/js/jquery-ui.min.js}"></script> -->
+</footer>
+
 </body>
 
 </html>
