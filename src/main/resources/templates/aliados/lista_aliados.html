@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head th:replace="~{plantillas/principal :: head}"></head>
+<body>
+	<header th:replace="~{plantillas/principal :: header}"></header>
+	
+	<div class="container  py-4">
+
+		<div class="card bg-light">
+			<div class="bg-dark card-header">
+				<h3 class="text-white" th:text="${titulo}"></h3>
+			</div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<!-- <a class="btn btn-outline-success btn-sm" 
+						th:href="@{/inventario/aliadonuevo}">Crear producto</a> -->
+				</h4>
+				<table class="table table-striped table-hover table-bordered table-sm" th:if="${not #lists.isEmpty(aliados)}">
+					<tr>
+						<th>Id</th>
+						<th class="col-2">Nit</th>
+						<th class="col-7">Nombre</th>
+						<th class="col-2">Territorio</th>
+						<th class="text-center col-2">Acciones</th>
+					</tr>
+					<tr th:each="alia : ${aliados}">
+						<td th:text="${alia.id}"></td>
+						<td th:text="${alia.nit}"></td>
+						<td th:text="${alia.nombre}"></td>
+						<td th:text="${alia.territorio}"></td>
+						<td class="text-center">
+							<a th:href="@{/inventario/aliadomodificar/} + ${alia.id}" title="editar">
+								<i class="bi-pencil-fill" style="color: cornflowerblue"></i></a>&nbsp;
+							<a th:href="@{/inventario/aliadoeliminar/} + ${alia.id}" title="eliminar"
+								onclick="return confirm('¿Está seguro de eliminar el aliado?')">
+								<i class="bi-eraser-fill" style="color: indianred"></i></a>
+						</td>
+					</tr>
+				</table>
+				<div class="alert alert-warning" th:if="${#lists.isEmpty(aliados)}">No hay aliados para mostrar</div>
+			</div>
+		</div>
+	</div>
+	
+	<footer th:replace="~{plantillas/principal :: footer}"></footer>
+</body>
+</html>

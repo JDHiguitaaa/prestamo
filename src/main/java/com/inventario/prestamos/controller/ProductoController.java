@@ -29,6 +29,13 @@ public class ProductoController {
         this.inventarioService = inventarioService;
     }
 
+    @GetMapping("/inicio")
+    public String inicio() {
+        return "inicio/index";
+    }
+
+
+
     @GetMapping("/productoslistar")
     public String listarProductos(@RequestParam(value = "pag", defaultValue = "0") int pag, Model model) {
         List<Producto> productos = inventarioService.buscarProductosTodos();

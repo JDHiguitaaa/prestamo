@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head th:replace="~{plantillas/principal :: head}"></head>
+
+<body class="bg-light">
+
+    <header th:replace="~{plantillas/principal :: header}"></header>
+
+    <div class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h2 class="display-5 fw-bold text-primary mb-3">Bienvenido al Sistema de Gestión</h2>
+                <p class="lead">Administre de manera eficiente los préstamos e inventario de productos</p>
+                <hr class="my-4">
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Tarjeta Lista de Productos -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-primary bg-gradient text-white rounded-circle mb-3">
+                            <i class="bi bi-list-check fs-2 p-3"></i>
+                        </div>
+                        <h5 class="card-title">Lista de Productos</h5>
+                        <p class="card-text">Visualice y gestione todos los productos disponibles en el inventario.</p>
+                        <a href="/inventario/productoslistar" class="btn btn-primary mt-2">Acceder <i class="bi bi-arrow-right"></i></a>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Préstamo Recibido -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-success bg-gradient text-white rounded-circle mb-3">
+                            <i class="bi bi-arrow-down-circle fs-2 p-3"></i>
+                        </div>
+                        <h5 class="card-title">Préstamo Recibido</h5>
+                        <p class="card-text">Registre los productos que nos han sido prestados por otros aliados.</p>
+                        <a href="#" class="btn btn-success mt-2">Acceder <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Préstamo Efectuado -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-warning bg-gradient text-white rounded-circle mb-3">
+                            <i class="bi bi-arrow-up-circle fs-2 p-3"></i>
+                        </div>
+                        <h5 class="card-title">Préstamo Efectuado</h5>
+                        <p class="card-text">Registre los productos que han sido prestados a otros aliados.</p>
+                        <a href="#" class="btn btn-warning mt-2">Acceder <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Pago de Préstamos -->
+            <div class="col-md-6 col-lg-3">
+                <div class="card h-100 shadow-sm border-0 hover-card">
+                    <div class="card-body text-center">
+                        <div class="feature-icon bg-info bg-gradient text-white rounded-circle mb-3">
+                            <i class="bi bi-cash-coin fs-2 p-3"></i>
+                        </div>
+                        <h5 class="card-title">Pago de Préstamos</h5>
+                        <p class="card-text">Gestione los pagos asociados a los préstamos de productos.</p>
+                        <a href="#" class="btn btn-info mt-2">Acceder <i class="bi bi-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h4><i class="bi bi-info-circle me-2 text-primary"></i>Información del Sistema</h4>
+                        <p>Este sistema le permite gestionar de manera eficiente el inventario de productos y los
+                            préstamos asociados. Utilice las opciones del menú superior o las tarjetas para acceder a
+                            las diferentes funcionalidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:replace="~{plantillas/principal :: footer}"></footer>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>
