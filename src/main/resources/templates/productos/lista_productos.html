@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="es">
+
 <head th:replace="~{plantillas/principal :: head}"></head>
+
 <body>
 	<header th:replace="~{plantillas/principal :: header}"></header>
-	
+
 	<div class="container  py-4">
 
 		<div class="card bg-light">
@@ -15,20 +17,25 @@
 					<!-- <a class="btn btn-outline-success btn-sm" 
 						th:href="@{/inventario/productonuevo}">Crear producto</a> -->
 				</h4>
-				<table class="table table-striped table-hover table-bordered table-sm" th:if="${not #lists.isEmpty(productos)}">
+				<table class="table table-striped table-hover table-bordered table-sm"
+					th:if="${not #lists.isEmpty(productos)}">
 					<tr>
-						<th>Id</th>
-						<th>Código</th>
-						<th>Descripción</th>
-						<th>Cantidad</th>
-						<th>Categoría</th>
-						<th>Disponible</th>
-						<th class="text-center">Acciones</th>
+						<th class="col-1">Id</th>
+						<th class="col-2">Código</th>
+						<th class="col-6">Descripción</th>
+						<th class="col-2">Referencia</th>
+						<th class="col-1">Cantidad</th>
+						<th class="col-2">Categoría</th>
+						<th class="col-1">Disponible</th>
+						<th class="text-center col-1">Acciones</th>
 					</tr>
 					<tr th:each="prod : ${productos}">
-						<td th:text="${prod.id}"></td>
+						<td><a th:href="@{/inventario/productoconsultar/} + ${prod.id}"
+								th:text="${#numbers.formatInteger(prod.id, 2)}" class="btn btn-outline-info btn-xs"></a>
+						</td>
 						<td th:text="${prod.codigo}"></td>
 						<td th:text="${prod.descripcion}"></td>
+						<td th:text="${prod.referencia}"></td>
 						<td th:text="${prod.cantidad}"></td>
 						<td th:text="${prod.categoria}"></td>
 						<td th:text="${prod.disponible ? 'Sí' : 'No'}"></td>
@@ -41,11 +48,13 @@
 						</td>
 					</tr>
 				</table>
-				<div class="alert alert-warning" th:if="${#lists.isEmpty(productos)}">No hay productos para mostrar</div>
+				<div class="alert alert-warning" th:if="${#lists.isEmpty(productos)}">No hay productos para mostrar
+				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<footer th:replace="~{plantillas/principal :: footer}"></footer>
 </body>
+
 </html>

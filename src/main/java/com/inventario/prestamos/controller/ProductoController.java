@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+
+import java.util.Arrays;
 import java.util.List;
 import com.inventario.prestamos.service.InventarioServiceIface;
 
@@ -87,7 +89,7 @@ public class ProductoController {
             Producto producto = inventarioService.buscarProductoPorId(id);
             if (producto != null) {
                 inventarioService.eliminarProductoPorId(id);
-                flash.addFlashAttribute("success", "El producto " + id + " fue elimnado con exito");
+                flash.addFlashAttribute("success", "El producto " + producto.getDescripcion() + " fue elimnado con exito");
             }
             else {
                 flash.addFlashAttribute("warning", "El producto con ID " + id + " no está en la base de datos");
@@ -112,5 +114,15 @@ public class ProductoController {
         model.addAttribute("titulo", "Modificar producto");
         model.addAttribute("producto", producto);
         return "productos/formulario_producto";
+    }
+
+    @ModelAttribute("categorias")
+    public List<String> obtenerCategorias() {
+        return Arrays.asList(
+                "Procesadores",
+                "Hematologia",
+                "Quimica",
+                "Inmunologia",
+                "Repuestos");
     }
 }

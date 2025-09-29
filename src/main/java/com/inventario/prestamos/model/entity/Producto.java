@@ -21,7 +21,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 
-
 @Entity
 @Table(name = "productos")
 public class Producto implements Serializable {
@@ -34,6 +33,7 @@ public class Producto implements Serializable {
     private String codigo;
     @NotEmpty
     private String descripcion;
+    private String referencia;    
     private Integer cantidad;
 
     @Column(name = "ultimo_ingreso")
@@ -52,11 +52,12 @@ public class Producto implements Serializable {
     public Producto() {
     }
 
-    public Producto(Long id, String codigo, String descripcion, Integer cantidad, Date fechaUltIngreso, boolean disponible,
+    public Producto(Long id, String codigo, String descripcion, String referencia, Integer cantidad, Date fechaUltIngreso, boolean disponible,
              String nombreUsuario, String categoria) {
         this.id = id;
         this.codigo = codigo;
         this.descripcion = descripcion;
+        this.referencia = referencia;
         this.cantidad = cantidad;
         this.fechaUltIngreso = fechaUltIngreso;
         this.disponible = disponible;
@@ -85,6 +86,14 @@ public class Producto implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public Integer getCantidad() {
@@ -128,7 +137,8 @@ public class Producto implements Serializable {
 
     @Override
     public String toString() {
-        return "Producto [id=" + id + ", codigo=" + codigo + ", descripcion=" + descripcion + ", cantidad=" + cantidad
+        return "Producto [id=" + id + ", codigo=" + codigo + ", descripcion=" + descripcion + ", referencia=" + referencia
+                + ", cantidad=" + cantidad
                 + ", fechaUltIngreso=" + fechaUltIngreso + ", disponible=" + disponible +", categoria=" + categoria + "]";
     }
 
